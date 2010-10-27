@@ -1,0 +1,11 @@
+<%=h @recurr.recurr_type %>
+<br>
+<%=h @recurr.recurr_at %>
+<br>
+<%=h @recurr.run_till %>
+<br>
+<%=h @recurr.active %>
+<br>
+
+<%= link_to 'Edit', edit_jobdefinition_recurrence_path(@jobdefn, @recurr) %> |
+<%= link_to 'Back', jobdefinition_recurrences_path %>

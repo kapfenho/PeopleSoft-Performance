@@ -1,0 +1,27 @@
+<h2>New transaction_group_item</h2>
+
+<% form_for([@transgroup, @transaction_group_item]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :order_number %><br />
+    <%= f.text_field :order_number %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value1 %><br />
+    <%= f.text_field :pm_context_value1 %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value2 %><br />
+    <%= f.text_field :pm_context_value2 %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value3 %><br />
+    <%= f.text_field :pm_context_value3 %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', transaction_group_transaction_group_items_path %>

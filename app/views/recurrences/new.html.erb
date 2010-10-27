@@ -1,0 +1,30 @@
+<h2>New Recurrence for "<%=h @jobdefn.short_desc[0..35] %>"</h2>
+
+<% form_for([@jobdefn, @recurr]) do |f| %>
+
+  <%= f.error_messages %>
+  <!-- %= error_messages_for :artwork, :artwork_picture, :picture %  -->
+
+  <p>
+    <%= f.label :recurr_type %>
+    <%= select("recurrence", "recurr_type", Recurrence::TYPE) %>
+  </p>
+  <p>
+    <%= f.label :recurr_at %>
+    <%= f.text_field :recurr_at %>
+  </p>
+  <p>
+    <%= f.label :run_till %>
+    <%= f.text_field :run_till %>
+  </p>
+  <p>
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </p>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', jobdefinitions_path %>

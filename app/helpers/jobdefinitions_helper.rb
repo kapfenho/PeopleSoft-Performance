@@ -1,0 +1,2 @@
+module JobdefinitionsHelper
+end

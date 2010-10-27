@@ -1,0 +1,32 @@
+<h2>Recurrences of "<%=h @jobdefn.short_desc[0..35] %>"</h2>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Recurr At</th>
+    <th>Run Till</th>
+    <th>Active?</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% for recurr in @recurrs %>
+  <tr>
+    <td><%=h recurr.recurr_type %></td>
+    <td><%=h recurr.recurr_at %></td>
+    <td><%=h recurr.run_till %></td>
+    <td><%=h recurr.active %></td>
+
+    <td><%= link_to 'Show', jobdefinition_recurrence_path(@jobdefn, recurr) %></td>
+    <td><%= link_to 'Edit', edit_jobdefinition_recurrence_path(@jobdefn, recurr) %></td>
+		<td><%= link_to 'Destroy', jobdefinition_recurrence_path(@jobdefn, recurr) , :confirm => "Are you sure?", :method => :delete %></td>
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recurrence', new_jobdefinition_recurrence_path %> |
+<%= link_to 'Back to Jobdefinition', jobdefinitions_path %>

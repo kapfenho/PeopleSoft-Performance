@@ -1,0 +1,28 @@
+<h2>Editing transaction_group_item</h2>
+
+<% form_for([@transgroup, @transaction_group_item]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :order_number %><br />
+    <%= f.text_field :order_number %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value1 %><br />
+    <%= f.text_field :pm_context_value1 %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value2 %><br />
+    <%= f.text_field :pm_context_value2 %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value3 %><br />
+    <%= f.text_field :pm_context_value3 %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', transaction_group_transaction_group_item_path(@transgroup,@transaction_group_item) %> |
+<%= link_to 'Back', transaction_group_transaction_group_items_path %>

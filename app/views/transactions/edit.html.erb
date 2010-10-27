@@ -1,0 +1,34 @@
+<h2>Editing Transaction</h2>
+
+<% form_for(@trans) do |f| %>
+<fieldset>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value1 %>
+    <%= f.text_field :pm_context_value1 %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value2 %>
+    <%= f.text_field :pm_context_value2 %>
+  </p>
+  <p>
+    <%= f.label :pm_context_value3 %>
+    <%= f.text_field :pm_context_value3 %>
+  </p>
+  <p>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+  </fieldset>
+<% end %>
+
+

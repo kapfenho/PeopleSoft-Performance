@@ -1,0 +1,13 @@
+<%=h @jobdefinition.system_name %>
+<br>
+<%=h @jobdefinition.prcsname %>
+<br>
+<%=h @jobdefinition.short_desc %>
+<br>
+<%=h @jobdefinition.description %>
+<br>
+<%=h @jobdefinition.active %>
+<br>
+
+<%= link_to 'Edit', edit_jobdefinition_path(@jobdefinition) %> |
+<%= link_to 'Back', jobdefinitions_path %>

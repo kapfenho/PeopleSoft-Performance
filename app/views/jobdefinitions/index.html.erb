@@ -1,0 +1,34 @@
+<h2>Listing Jobdefinitions</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>System</th>
+    <th>Process</th>
+    <th>Short Desc</th>
+    <th>Active</th>
+    <th>Definition</th>
+    <th>Show</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  </thead>
+<tbody>
+  <% @jobdefinitions.each do |jdef| %>
+  <tr>
+    <td><%=h jdef.system_name %></td>
+    <td><%=h jdef.prcsname %></td>
+    <td><%=h jdef.short_desc %></td>
+    <td><%=h jdef.active %></td>
+    <td><%= link_to 'Recurrences', jobdefinition_recurrences_path(jdef) %></td>
+    <td><%= link_to 'Show', jdef %></td>
+    <td><%= link_to 'Edit', edit_jobdefinition_path(jdef) %></td>
+    <td><%= link_to 'Destroy', jdef, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Jobdefinition', new_jobdefinition_path %>

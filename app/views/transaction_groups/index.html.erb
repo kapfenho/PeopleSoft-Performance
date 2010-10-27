@@ -1,0 +1,26 @@
+<h2>Transaction Groups (Business Processes)</h2>
+
+<table class="full">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Chart</th>
+      <th>Edit</th>
+      <th>Items</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @transaction_groups.each do |transaction_group| %>
+  <tr>
+    <td><%=h transaction_group.name %></td>
+    <td><%= link_to 'Show', transaction_group %></td>
+    <td><%= link_to 'Edit', edit_transaction_group_path(transaction_group) %></td>
+    <td><%= link_to 'Items', transaction_group_transaction_group_items_path(transaction_group) %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New transaction_group', new_transaction_group_path %>

@@ -1,0 +1,26 @@
+<h2>Listing Transaction Group Items</h2>
+
+<table>
+  <tr>
+    <th>Pm context value1</th>
+    <th>Pm context value2</th>
+    <th>Pm context value3</th>
+  </tr>
+
+<% @transaction_group_items.each do |transaction_group_item| %>
+  <tr>
+    <td><%=h transaction_group_item.order_number %></td>
+    <td><%=h transaction_group_item.pm_context_value1 %></td>
+    <td><%=h transaction_group_item.pm_context_value2 %></td>
+    <td><%=h transaction_group_item.pm_context_value3 %></td>
+    <td><%= link_to 'Show', transaction_group_transaction_group_item_path(@transgroup,transaction_group_item) %></td>
+    <td><%= link_to 'Edit', edit_transaction_group_transaction_group_item_path(@transgroup,transaction_group_item) %></td>
+    <td><%= link_to 'Destroy', transaction_group_transaction_group_item_path(@transgroup,transaction_group_item), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New transaction_group_item', new_transaction_group_transaction_group_item_path %> |
+<%= link_to 'Back to Jobdefinition', transaction_groups_path %>

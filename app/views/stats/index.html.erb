@@ -1,0 +1,67 @@
+<h2>
+  Top Transactions sorted by the average respond time
+</h2>
+<table>
+  <thead>
+    <tr>
+      <th>
+        ID
+      </th>
+      <th>
+        PM_CONTEXT_VALUE1
+      </th>
+      <th>
+        PM_CONTEXT_VALUE2
+      </th>
+      <th>
+        PM_CONTEXT_VALUE3
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Average
+      </th>
+      <th>
+        Chart
+      </th>
+      <th>
+        Edit
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for tr in @trans %>
+    <tr>
+      <td>
+        <%=h tr.id %>
+      </td>
+      <td>
+        <%=h tr.pm_context_value1 %>
+      </td>
+      <td>
+        <%=h tr.pm_context_value2 %>
+      </td>
+      <td>
+        <%=h tr.pm_context_value3 %>
+      </td>
+      <td>
+        <%=h tr.description %>
+      </td>
+      <td>
+        <%=h tr.sum_avg.round %>
+      </td>
+      <td>
+        <%= link_to 'Graph', :controller => :transhist, :action => :show, :id1 => tr.pm_context_value1, :id2 => tr.pm_context_value2, :id3 => tr.pm_context_value3 %>
+      </td>
+      <td>
+        <% if tr.description.nil?  %>
+          <%= link_to 'New', :controller => :transactions, :action => :new, :id1 => tr.pm_context_value1, :id2 => tr.pm_context_value2, :id3 => tr.pm_context_value3 %>
+        <% else %>
+          <%= link_to 'Edit', :controller => :transactions, :action => :edit, :id1 => tr.pm_context_value1, :id2 => tr.pm_context_value2, :id3 => tr.pm_context_value3 %>
+        <% end %>
+      </td>
+    </tr><% end %>
+  </tbody>
+</table>
+

@@ -1,0 +1,39 @@
+<h2>
+  <%=h @transaction_group.name %>
+</h2>
+<h3>
+  <%=h @transaction_group.description %>
+</h3>
+
+<br />
+<center>  
+  <!-- %= image_tag("group.png") % -->
+  <img src="<%= @google_url %>"/>
+</center>
+<br />
+
+<table class="full">
+  <thead>
+  <tr>
+    <th>Order</th>
+    <th>Pm context value1</th>
+    <th>Pm context value2</th>
+    <th>Pm context value3</th>
+    <th>Chart</th>
+  </tr>
+</thead>
+<tbody>
+  <% @transaction_group.transaction_group_items.each do |item| %>
+  <tr>
+    <td><%=h item.order_number %></td>
+    <td><%=h item.pm_context_value1 %></td>
+    <td><%=h item.pm_context_value2 %></td>
+    <td><%=h item.pm_context_value3 %></td>
+    <td><%= link_to 'Graph', :controller => :transhist, :action => :show, :id1 => item.pm_context_value1, :id2 => item.pm_context_value2, :id3 => item.pm_context_value3 %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+
+<%= link_to 'Edit', edit_transaction_group_path(@transaction_group) %> |
+<%= link_to 'Back', transaction_groups_path %>
