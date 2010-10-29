@@ -1,5 +1,5 @@
 <h2>
-  Top Transactions sorted by the average respond time
+  Top Transactions sorted by the average respond time .::. Date: <%= @date.strftime("%A %d.%m.%Y")    %>
 </h2>
 <table>
   <thead>
@@ -20,7 +20,13 @@
         Description
       </th>
       <th>
-        Average
+        Counter
+      </th>
+      <th>
+        Avg/ms
+      </th>
+      <th>
+        StdDev
       </th>
       <th>
         Chart
@@ -31,10 +37,12 @@
     </tr>
   </thead>
   <tbody>
+    <% count = 0 %>
     <% for tr in @trans %>
+    <%  count += 1 %>
     <tr>
-      <td>
-        <%=h tr.id %>
+      <td align="right">
+        <%=h count %>
       </td>
       <td>
         <%=h tr.pm_context_value1 %>
@@ -48,9 +56,17 @@
       <td>
         <%=h tr.description %>
       </td>
-      <td>
-        <%=h tr.sum_avg.round %>
+      <td align="right">
+        <%=h number_with_delimiter(tr.counter.round) %>
       </td>
+      <td align="right">
+        <%=h number_with_delimiter(tr.sum_avg.round) %>
+      </td>
+      <td align="right">
+        <%=h tr.std_dev.round %>
+      </td>
+
+
       <td>
         <%= link_to 'Graph', :controller => :transhist, :action => :show, :id1 => tr.pm_context_value1, :id2 => tr.pm_context_value2, :id3 => tr.pm_context_value3 %>
       </td>

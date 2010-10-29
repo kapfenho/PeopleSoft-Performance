@@ -2,7 +2,7 @@ class StatsController < ApplicationController
 
   def index
     @trans = TranshistTopAvg.find(:all, :conditions => 'rownum < 101')
-
+    @date = Transhist.maximum("COLLECT_DATE")
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @trans }
