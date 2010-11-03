@@ -13,18 +13,19 @@ class TransactionGroupsController < ApplicationController
   # GET /transaction_groups/1
   # GET /transaction_groups/1.xml
   def show
+    @period_list = [['7 days',7],['14 days',14],['31 days',30],['3 months',60],['6 months',180]]
+
+    # get description data
     @transaction_group = TransactionGroup.find(params[:id])
-    #@transaction_group.transaction_group_items.all :joins => :transhist #, :conditions => {'transhist.collect_date' => time_range}
     @transaction_group.transaction_group_items.all
-    #@tran_avg = TransgroupAvg.all(:conditions => ["TRANSACTION_GROUP_ID = ? and collect_date > ?", params[:id], DateTime.now - 20.days], :order => 'COLLECT_DATE DESC')
     
-    # get the chart
+    # get the period, default is 7 days
+    @period_curr = params[:period].to_i
+    @period_curr = 7 if @period_curr.nil? || @period_curr == 0
+
     mgr = GraphTransactionGroup.new
-    mgr.getData(params[:id])
-
+    mgr.getData(@transaction_group, @period_curr)
     @google_url = mgr.write
-
-    @trans = mgr.trans
 
     respond_to do |format|
       format.html # show.html.erb

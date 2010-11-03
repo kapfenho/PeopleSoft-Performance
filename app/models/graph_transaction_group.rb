@@ -1,34 +1,19 @@
 class GraphTransactionGroup # < ActiveRecord::Base
 
-  attr_accessor :trans
-
-  def getData(key)
-    @tg = TransactionGroup.find(key)
-    @tg.transaction_group_items.all
-    
-    #@tg.each do | e |
-    #  @data << Transhist.all :conditions => ["pm_context_value1 = ? AND pm_context_value2 = ? AND pm_context_value3 = ?", 
-    #            e.pm_context_value1, e.pm_context_value2, e.pm_context_value3], :order => "collect_date ASC"
-    #end
-
-    @data = TransgroupAvg.all(:conditions => ["TRANSACTION_GROUP_ID = ?", key], 
+  def getData(tg, period)
+    @tg = tg
+    @data = TransgroupAvg.all(:conditions => ["TRANSACTION_GROUP_ID = ? AND COLLECT_DATE > (SYSDATE - ?)", @tg.id, period], 
             :order => 'COLLECT_DATE ASC')
   end
 
   def write
-    # require 'gruff'
-    Rails.logger.info "----- A ------"
-    
-#    g = Gruff::Line.new
-#    g.title = @tg.name
-    
     values = Array.new
     dates  = Hash.new
     
     @data.each do | e |
       values << e.sum_avg
     end
-
+    
     dates[0] = @data[0].collect_date.mon.to_s + '-' + @data[0].collect_date.day.to_s
     dates[@data.size - 1] = @data[@data.size - 1].collect_date.mon.to_s + '-' + @data[@data.size - 1].collect_date.day.to_s
     
