@@ -72,7 +72,7 @@
       </td>
       <td>
         <% if tr.description.nil?  %>
-          <%= link_to 'New', :controller => :transactions, :action => :new, :system_name => tr.system_name, :pm_transaction => tr.pm_transaction %>
+          <%= link_to 'New',  :controller => :transactions, :action => :new,  :system_name => tr.system_name, :pm_transaction => tr.pm_transaction %>
         <% else %>
           <%= link_to 'Edit', :controller => :transactions, :action => :edit, :system_name => tr.system_name, :pm_transaction => tr.pm_transaction %>
         <% end %>

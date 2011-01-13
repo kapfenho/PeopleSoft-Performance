@@ -54,6 +54,7 @@ Rails3Oracle::Application.routes.draw do
 
 
   resources :transactions
+  match 'transactions/edit' => 'transactions#edit'
   resources :stats
 
   # resources :jobdefinitions
