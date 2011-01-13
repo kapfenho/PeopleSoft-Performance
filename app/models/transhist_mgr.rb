@@ -2,12 +2,12 @@ class TranshistMgr # < ActiveRecord::Base
 
   attr_accessor :trans
 
-  def getTranshists(pm1, pm2, pm3)
-    @transname = pm1 + "--" + pm2 + "--" + pm3
-    @hists = Transhist.all :conditions => ["pm_context_value1 = ? AND pm_context_value2 = ? AND pm_context_value3 = ? and counter > 1 and collect_date > sysdate - ?", 
-              pm1, pm2, pm3, 180], :order => "collect_date ASC"
-    @trans = Transaction.first :conditions => ["pm_context_value1 = ? AND pm_context_value2 = ? AND pm_context_value3 = ?", 
-                        pm1, pm2, pm3]
+  def getTranshists(system_name, pm_transaction)
+    @transname = system_name + "--" + pm_transaction
+    @hists = Transhist.all :conditions => ["system_name = ? AND pm_transaction = ? AND counter > 1 AND collect_date > sysdate - ?", 
+              system_name, pm_transaction, 180], :order => "collect_date ASC"
+    @trans = Transaction.first :conditions => ["system_name = ? AND pm_transaction = ?", 
+                        system_name, pm_transaction]
   end
 
   def write

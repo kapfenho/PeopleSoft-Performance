@@ -22,9 +22,8 @@
   <thead>
   <tr>
     <th>Order</th>
-    <th>Pm context value1</th>
-    <th>Pm context value2</th>
-    <th>Pm context value3</th>
+    <th>System Name</th>
+    <th>PM Transaction</th>
     <th>Chart</th>
   </tr>
 </thead>
@@ -32,10 +31,9 @@
   <% @transaction_group.transaction_group_items.each do |item| %>
   <tr>
     <td><%=h item.order_number %></td>
-    <td><%=h item.pm_context_value1 %></td>
-    <td><%=h item.pm_context_value2 %></td>
-    <td><%=h item.pm_context_value3 %></td>
-    <td><%= link_to 'Graph', :controller => :transhist, :action => :show, :id1 => item.pm_context_value1, :id2 => item.pm_context_value2, :id3 => item.pm_context_value3 %></td>
+    <td><%=h item.system_name %></td>
+    <td><%=h item.pm_transaction %></td>
+    <td><%= link_to 'Graph', :controller => :transhist, :action => :show, :system_name => item.system_name, :pm_transaction => item.pm_transaction %></td>
   </tr>
   <% end %>
 </tbody>

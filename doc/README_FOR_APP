@@ -1,2 +1,9 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+
+select	PUBLISHTIMESTAMP, LASTUPDDTTM - PUBLISHTIMESTAMP as seks --((LASTUPDDTTM - PUBLISHTIMESTAMP)*24*60*60) as seks
+from	PSIBLOGHDR
+where	IB_OPERATIONNAME = 'AT_MSG_EDMS'
+and		PUBLISHTIMESTAMP > sysdate - 0.5
+order by PUBLISHTIMESTAMP

@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
 
   def new
-    @trans = Transaction.new(:pm_context_value1 => params[:id1], :pm_context_value2 => params[:id2], :pm_context_value3 => params[:id3])
+    @trans = Transaction.new(:system_name => params[:system_name], :pm_transaction => params[:pm_transaction])
     respond_to do |format|
       format.html
       format.xml  { render :xml => @trans }
@@ -10,8 +10,8 @@ class TransactionsController < ApplicationController
 
   def edit
     @trans = 
-      Transaction.first :conditions => ["pm_context_value1 = ? AND pm_context_value2 = ? AND pm_context_value3 = ?", 
-                      params[:id1], params[:id2], params[:id3]]
+      Transaction.first :conditions => ["system_name = ? AND pm_transaction = ?", 
+                      params[:system_name], params[:pm_transaction]]
     respond_to do |format|
       format.html
       format.xml  { render :xml => @trans }

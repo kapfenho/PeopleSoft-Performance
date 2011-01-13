@@ -13,7 +13,7 @@ class TransactionGroupsController < ApplicationController
   # GET /transaction_groups/1
   # GET /transaction_groups/1.xml
   def show
-    @period_list = [['7 days',7],['14 days',14],['31 days',30],['3 months',60],['6 months',180]]
+    @period_list = [['7 days',7],['14 days',14],['31 days',30],['3 months',90],['6 months',180]]
 
     # get description data
     @transaction_group = TransactionGroup.find(params[:id])
@@ -21,7 +21,7 @@ class TransactionGroupsController < ApplicationController
     
     # get the period, default is 7 days
     @period_curr = params[:period].to_i
-    @period_curr = 7 if @period_curr.nil? || @period_curr == 0
+    @period_curr = 180 if @period_curr.nil? || @period_curr == 0
 
     mgr = GraphTransactionGroup.new
     mgr.getData(@transaction_group, @period_curr)

@@ -10,9 +10,8 @@
 <% @transaction_group_items.each do |transaction_group_item| %>
   <tr>
     <td><%=h transaction_group_item.order_number %></td>
-    <td><%=h transaction_group_item.pm_context_value1 %></td>
-    <td><%=h transaction_group_item.pm_context_value2 %></td>
-    <td><%=h transaction_group_item.pm_context_value3 %></td>
+    <td><%=h transaction_group_item.system_name %></td>
+    <td><%=h transaction_group_item.pm_transaction %></td>
     <td><%= link_to 'Show', transaction_group_transaction_group_item_path(@transgroup,transaction_group_item) %></td>
     <td><%= link_to 'Edit', edit_transaction_group_transaction_group_item_path(@transgroup,transaction_group_item) %></td>
     <td><%= link_to 'Destroy', transaction_group_transaction_group_item_path(@transgroup,transaction_group_item), :confirm => 'Are you sure?', :method => :delete %></td>

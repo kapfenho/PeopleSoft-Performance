@@ -1,6 +1,12 @@
 <h2>
   Top Transactions sorted by the average respond time .::. Date: <%= @date.strftime("%A %d.%m.%Y")    %>
 </h2>
+
+<% form_tag url_for(:system_name => :system_name),  :method => :get do %>
+  <%= select_tag(:system_name, options_for_select(@system_list,@system_curr)) %>
+  <%= submit_tag "Send" %>
+<% end %>
+<br/>
 <table>
   <thead>
     <tr>
@@ -8,13 +14,10 @@
         ID
       </th>
       <th>
-        PM_CONTEXT_VALUE1
+        SYSTEM
       </th>
       <th>
-        PM_CONTEXT_VALUE2
-      </th>
-      <th>
-        PM_CONTEXT_VALUE3
+        PM_TRANSACTION
       </th>
       <th>
         Description
@@ -45,13 +48,10 @@
         <%=h count %>
       </td>
       <td>
-        <%=h tr.pm_context_value1 %>
+        <%=h tr.system_name %>
       </td>
       <td>
-        <%=h tr.pm_context_value2 %>
-      </td>
-      <td>
-        <%=h tr.pm_context_value3 %>
+        <%=h tr.pm_transaction %>
       </td>
       <td>
         <%=h tr.description %>
@@ -68,13 +68,13 @@
 
 
       <td>
-        <%= link_to 'Graph', :controller => :transhist, :action => :show, :id1 => tr.pm_context_value1, :id2 => tr.pm_context_value2, :id3 => tr.pm_context_value3 %>
+        <%= link_to 'Graph', :controller => :transhist, :action => :show, :system_name => tr.system_name, :pm_transaction => tr.pm_transaction %>
       </td>
       <td>
         <% if tr.description.nil?  %>
-          <%= link_to 'New', :controller => :transactions, :action => :new, :id1 => tr.pm_context_value1, :id2 => tr.pm_context_value2, :id3 => tr.pm_context_value3 %>
+          <%= link_to 'New', :controller => :transactions, :action => :new, :system_name => tr.system_name, :pm_transaction => tr.pm_transaction %>
         <% else %>
-          <%= link_to 'Edit', :controller => :transactions, :action => :edit, :id1 => tr.pm_context_value1, :id2 => tr.pm_context_value2, :id3 => tr.pm_context_value3 %>
+          <%= link_to 'Edit', :controller => :transactions, :action => :edit, :system_name => tr.system_name, :pm_transaction => tr.pm_transaction %>
         <% end %>
       </td>
     </tr><% end %>

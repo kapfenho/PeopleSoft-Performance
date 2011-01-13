@@ -2,7 +2,7 @@ class GraphTransactionGroup # < ActiveRecord::Base
 
   def getData(tg, period)
     @tg = tg
-    @data = TransgroupAvg.all(:conditions => ["TRANSACTION_GROUP_ID = ? AND COLLECT_DATE > (SYSDATE - ?)", @tg.id, period], 
+    @data = TransgroupAvg.all(:conditions => ["TRANSACTION_GROUP_ID = ? AND COUNTER = ? AND COLLECT_DATE > (SYSDATE - ?)", @tg.id, tg.transaction_group_items.size, period],
             :order => 'COLLECT_DATE ASC')
   end
 

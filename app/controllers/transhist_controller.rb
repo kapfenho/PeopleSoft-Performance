@@ -2,7 +2,7 @@ class TranshistController < ApplicationController
 
   def show
     mgr = TranshistMgr.new
-    mgr.getTranshists(params[:id1], params[:id2], params[:id3])
+    mgr.getTranshists(params[:system_name], params[:pm_transaction])
     @graph_url = mgr.write
     @trans = mgr.trans
 

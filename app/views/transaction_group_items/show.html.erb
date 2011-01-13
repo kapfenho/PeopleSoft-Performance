@@ -3,20 +3,14 @@
   <%=h @transaction_group_item.order_number %>
 </p>
 <p>
-  <b>Pm context value1:</b>
-  <%=h @transaction_group_item.pm_context_value1 %>
+  <b>Sytem Name:</b>
+  <%=h @transaction_group_item.system_name %>
 </p>
 
 <p>
-  <b>Pm context value2:</b>
-  <%=h @transaction_group_item.pm_context_value2 %>
+  <b>PM Transaction:</b>
+  <%=h @transaction_group_item.pm_transaction %>
 </p>
-
-<p>
-  <b>Pm context value3:</b>
-  <%=h @transaction_group_item.pm_context_value3 %>
-</p>
-
 
 <%= link_to 'Edit', edit_transaction_group_transaction_group_item_path(@transgroup,@transaction_group_item) %> |
 <%= link_to 'Back', transaction_group_transaction_group_items_path %>
