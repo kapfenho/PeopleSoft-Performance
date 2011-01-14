@@ -4,7 +4,8 @@ class TranshistMgr # < ActiveRecord::Base
 
   def getTranshists(system_name, pm_transaction)
     @transname = system_name + "--" + pm_transaction
-    @hists = Transhist.all :conditions => ["system_name = ? AND pm_transaction = ? AND counter > 1 AND collect_date > sysdate - ?", 
+#   @hists = Transhist.all :conditions => ["system_name = ? AND pm_transaction = ? AND counter > 1 AND collect_date > sysdate - ?", 
+    @hists = Transhist.all :conditions => ["system_name = ? AND pm_transaction = ? AND collect_date > sysdate - ?", 
               system_name, pm_transaction, 180], :order => "collect_date ASC"
     @trans = Transaction.first :conditions => ["system_name = ? AND pm_transaction = ?", 
                         system_name, pm_transaction]
