@@ -52,9 +52,8 @@ Rails3Oracle::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
 
-
-  resources :transactions
   match 'transactions/edit' => 'transactions#edit'
+  resources :transactions
   resources :stats
 
   # resources :jobdefinitions
