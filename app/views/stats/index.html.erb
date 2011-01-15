@@ -2,7 +2,7 @@
   Top Transactions sorted by the average respond time .::. Date: <%= @date.strftime("%A %d.%m.%Y")    %>
 </h2>
 
-<% form_tag url_for(:system_name => :system_name),  :method => :get do %>
+<%= form_tag url_for(:system_name => :system_name),  :method => :get do %>
   <%= select_tag(:system_name, options_for_select(@system_list,@system_curr)) %>
   <%= submit_tag "Send" %>
 <% end %>

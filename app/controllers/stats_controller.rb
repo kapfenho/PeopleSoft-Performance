@@ -13,7 +13,7 @@ class StatsController < ApplicationController
     @system_curr = 'PSFT-OL' if @system_curr.nil? # || @system_curr not in list
 
     @trans = TranshistTopAvg.find(:all, :conditions => ['SYSTEM_NAME = ? AND rownum < 101', @system_curr])
-    @date = Transhist.maximum("COLLECT_DATE")
+    @date = Transhist.where(:system_name => @system_curr).maximum("COLLECT_DATE")
     
     respond_to do |format|
       format.html # index.html.erb
