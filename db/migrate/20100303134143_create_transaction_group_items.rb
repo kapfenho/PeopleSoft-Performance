@@ -3,7 +3,8 @@ class CreateTransactionGroupItems < ActiveRecord::Migration
     create_table :transaction_group_items do |t|
       t.references  :transaction_group
       t.string      :pm_transaction
-      t.number      :order_number
+      t.integer     :order_number
+      t.string      :system_name
 
       t.timestamps
     end
