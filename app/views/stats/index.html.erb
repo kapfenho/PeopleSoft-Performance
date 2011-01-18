@@ -14,10 +14,10 @@
         ID
       </th>
       <th>
-        SYSTEM
+        System
       </th>
       <th>
-        PM_TRANSACTION
+        PM-Transaction
       </th>
       <th>
         Description
@@ -27,6 +27,15 @@
       </th>
       <th>
         Avg/ms
+      </th>
+      <th>
+        Median
+      </th>
+      <th>
+        Min
+      </th>
+      <th>
+        Max
       </th>
       <th>
         StdDev
@@ -61,6 +70,15 @@
       </td>
       <td align="right">
         <%=h number_with_delimiter(tr.sum_avg.round) %>
+      </td>
+      <td align="right">
+        <%=h number_with_delimiter(tr.median.round) %>
+      </td>
+      <td align="right">
+        <%=h number_with_delimiter(tr.min.round) %>
+      </td>
+      <td align="right">
+        <%=h number_with_delimiter(tr.max.round) %>
       </td>
       <td align="right">
         <%=h tr.std_dev.round %>
