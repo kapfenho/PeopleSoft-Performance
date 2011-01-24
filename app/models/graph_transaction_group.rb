@@ -13,9 +13,11 @@ class GraphTransactionGroup # < ActiveRecord::Base
     @data.each do | e |
       values << e.sum_avg
     end
-    
-    dates[0] = @data[0].collect_date.mon.to_s + '-' + @data[0].collect_date.day.to_s
-    dates[@data.size - 1] = @data[@data.size - 1].collect_date.mon.to_s + '-' + @data[@data.size - 1].collect_date.day.to_s
+
+    if dates.length > 0
+      dates[0] = @data[0].collect_date.mon.to_s + '-' + @data[0].collect_date.day.to_s
+      dates[@data.size - 1] = @data[@data.size - 1].collect_date.mon.to_s + '-' + @data[@data.size - 1].collect_date.day.to_s
+    end
     
 #    g.data("Total Process Waiting Time", values)
 #    g.labels = dates
