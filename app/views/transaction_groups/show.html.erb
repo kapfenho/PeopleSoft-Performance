@@ -5,7 +5,7 @@
   <%=h @transaction_group.description %>
 </h3>
 
-<% form_tag url_for(:period => :period),  :method => :get do %>
+<%= form_tag url_for(:period => :period),  :method => :get do %>
 <!-- % form_tag transaction_groups_path, :id => :id,  :method => :get do % -->
   <%= select_tag(:period, options_for_select(@period_list,@period_curr)) %>
   <%= submit_tag "Send" %>
