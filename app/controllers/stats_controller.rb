@@ -6,7 +6,9 @@ class StatsController < ApplicationController
           ['PeopleSoft Batch',    'PSFT-BT'],
           ['PeopleSoft Ext Calls','PSFT-EX'],
           ['WebShop',             'WSHOP'],
-          ['Selfcare',            'SCARE']]
+          ['Selfcare',            'SCARE'],
+          ['CSDB',                'CSDB'],
+          ['WebPortal PSFT-IB Calls', 'IB_PSFT']]
           
     # get the period, default is 7 days
     @system_curr = params[:system_name]
